@@ -81,10 +81,6 @@ def print_solution(data, manager, routing, solution, locations_coords, locations
     print(f"Total distance of all routes: {total_distance}m")
     print(f"Total load of all routes: {total_load}")
 
-
-
-
-
 # Haversine distance, calculate distance between two coordinates
 def haversine(coord1, coord2):
     R = 6371.0  # Earth radius in kilometers
@@ -259,7 +255,7 @@ def main():
     
     ################################################################################
 
-    # Setting first solution heuristic.
+    # Setting first solution heuristic (for the initial solution)
     search_parameters = pywrapcp.DefaultRoutingSearchParameters()
     search_parameters.first_solution_strategy = (
         routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC
@@ -275,7 +271,8 @@ def main():
 
     # Solve the problem.
     solution = routing.SolveWithParameters(search_parameters)
-    #print(solution)
+    
+
     # Print the metrics:
     if solution:
         # Your existing print_solution function
